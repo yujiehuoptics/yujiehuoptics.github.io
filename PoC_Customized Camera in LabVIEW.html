@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>
+            PoC: Using Customized Camera in LabVIEW
+        </title>
+
+        <link rel="stylesheet" href="css/style.css">
+        <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+
+    <body>
+        <!-- Header Menu of the Page -->
+       <!-- Header Menu of the Page -->
+
+    
+<header>
+    <!-- Top header menu containing
+         logo and Navigation bar -->
+    <div id="top-header">
+             
+        <!-- Logo -->
+        <div id="logo">
+            <img src="img/logo2.png" />
+        </div>   
+                 
+        <!-- Navigation Menu -->
+        <nav>
+          <div id="menu">
+            <ul>
+                <li class="active"><a href="index.html">Home</a></li>
+                <li><a href="CV.html">CV</a></li>
+                <li><a href="Projects.html">Projects</a></li>
+                <li><a href="#">About me</a></li>
+            </ul>
+          </div>
+        </nav>
+    </div>   
+ 
+    <!-- Image menu in Header to contain an Image and
+         a sample text over that image -->
+    <div id="header-image-menu">
+        <!--<img src="img/slider3.jpg"> -->
+        <h2 id = "image-text">
+           <!-- Welcome to Ray Club -->
+        </h2> 
+        <h3 id = "image-text">
+            
+        </h3>
+    </div>
+</header>
+
+
+
+
+
+ <!-- Main content between Header and Footer -->
+ <main>
+    <!-- Section 1 of Main content -->
+    <section>
+        <div id="oneprojecttext">
+            <h1 class="title">PoC: Customized Camera in LabVIEW</h1>                               
+            <p>
+                <br><Strong>Description: </Strong>
+                <br>Data acquisition from customed camera (camera link) using NI Frame Grabber
+                <br>
+                <img src="img/Camera file generator.png" alt="Camera file generator"  style="width:70%; align-items: center;" >
+                
+                <br><br><strong>Solution: </strong>
+                <br>1. Validate the capability of NI's image acquisition card to capture data from the customer's custom Camera Link camera.
+                <br>2. Compare the differences between NI's image acquisition card and the previously utilized Dalsa image acquisition card by the customer.
+                <br>3. Utilize the <a href="https://www.ni.com/en-ca/support/documentation/supplemental/19/creating-a-camera-file-using-the-ni-camera-file-generator.html">NI Camera file generator</a> to compose camera files, enabling NI's image acquisition card to successfully capture images from the camera.
+                
+                <br><br><strong>Result:</strong>
+                <br>By utilizing the camera file generator, the camera file was modified according to the customer's specific camera requirements, including Tap configuration, image size, etc. The customer utilizes an analog camera that generates analog camera signals through a custom-made board. The camera parameters are as follows:
+                Bits per Pixel: 16-bit; Tap configuration: 1 Tap; Scan Type: Line; Maximum width: 1500 (All other parameters remain unchanged, aligning with the default camera file settings).
+                <br><br>Subsequently, the modified camera file was loaded into NI MAX to evaluate the viability of integrating the customer's camera into the MAX environment.
+                <br><br>During the examination, it was noted that the customer's 16-bit camera exhibited completely black data in the NI MAX interface. This occurrence arises from the inherent limitation of the monitor, which can only render grayscale data within the 8-bit range of 0 to 255. However, upon conducting a direct analysis of the displayed image data in NI MAX, noticeable variations in grayscale values were detected, confirming the successful reception of data.
+                Following the adjustment of the camera file's Bits per Pixel setting to 8-bit, a discernible image that could be displayed on the monitor was successfully obtained.
+                <br><br>Through the process of programmatic validation, the compatibility of the customer's camera with the VAS driver was verified. The results conclusively demonstrated that the camera, in conjunction with the edited camera file, can be efficiently utilized within the program.
+                <br>
+                <br><strong>Reference:</strong> 
+                <br><a href="https://knowledge.ni.com/KnowledgeArticleDetails?id=kA00Z000000P6COSA0&l=en-CA">Camera Interfaces Supported by NI Software</a> 
+                <br><a href="https://digital.ni.com/public.nsf/allkb/9AE519B2C79BAED9862578D90009AF59">Create a camera file with 10-tap configuration</a>
+                <br><a href="https://digital.ni.com/public.nsf/allkb/FB8D94201B7630DF862575F3002639ED">Change camera files programmatically for the IMAQ interface</a>
+                <br><a href="https://knowledge.ni.com/KnowledgeArticleDetails?id=kA03q000000YI74CAG&l=en-CA">What is a Camera File and Do I Need to Generate One to Work With NI Vision Software</a>
+                <br><a href="https://www.ni.com/en-ca/support/documentation/supplemental/06/digital-camera-basics.html">Digital Camera Basics</a>
+            </p>
+        </div>         
+    </section>
+
+     
+</main>
+
+
+<footer id="footer">
+ 
+    <!-- Copyright Section -->
+    <div class="copyright">
+         
+        <p>© All rights reserved | Yujie Hu </p>
+
+        <ul class="contact">
+
+            <li>
+                <a href="https://www.linkedin.com/in/yujie-hu-943209b9/" class="fa fa-linkedin">
+
+                </a>
+            </li>
+
+            <li>
+                <a href="https://www.facebook.com/profile.php?id=100085625613491" class="fa fa-facebook">
+
+                </a>
+            </li>
+
+            
+        </ul>
+    </div>
+</footer>

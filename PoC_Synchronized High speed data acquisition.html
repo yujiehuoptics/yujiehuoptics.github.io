@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>
+            PoC: Synchronized High speed data acquisition.
+        </title>
+
+        <link rel="stylesheet" href="css/style.css">
+        <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+
+    <body>
+        <!-- Header Menu of the Page -->
+       <!-- Header Menu of the Page -->
+
+    
+<header>
+    <!-- Top header menu containing
+         logo and Navigation bar -->
+    <div id="top-header">
+             
+        <!-- Logo -->
+        <div id="logo">
+            <img src="img/logo2.png" />
+        </div>   
+                 
+        <!-- Navigation Menu -->
+        <nav>
+          <div id="menu">
+            <ul>
+                <li class="active"><a href="index.html">Home</a></li>
+                <li><a href="CV.html">CV</a></li>
+                <li><a href="Projects.html">Projects</a></li>
+                <li><a href="#">About me</a></li>
+            </ul>
+          </div>
+        </nav>
+    </div>   
+ 
+    <!-- Image menu in Header to contain an Image and
+         a sample text over that image -->
+    <div id="header-image-menu">
+        <!--<img src="img/slider3.jpg"> -->
+        <h2 id = "image-text">
+           <!-- Welcome to Ray Club -->
+        </h2> 
+        <h3 id = "image-text">
+            
+        </h3>
+    </div>
+</header>
+
+
+
+
+
+ <!-- Main content between Header and Footer -->
+ <main>
+    <!-- Section 1 of Main content -->
+    <section>
+        <div id="oneprojecttext">
+            <h1 class="title">PoC: Synchronized High speed data acquisition</h1>                               
+            <p>
+                <br><Strong>Aim: </Strong>
+                <br>Test the synchronization of high-speed Oscilloscope and high-speed Transceiver
+                <br>
+                <img src="img/Synchronized High speed data acquisition.jpg" alt="Synchronized High speed data acquisition"  style="width:60%; align-items: center;" >
+                
+                <br><br><strong>Introduction: </strong>
+                <br>Test the synchronization of high-speed Oscilloscope (PXIe-5105) and high-speed Transceiver(NI-5783) in 400MS/s
+
+                <br><br><strong>Method:</strong>
+                <br>The LabVIEW and LabVIEW FPGA programs were developed to customize the test program and evaluate the synchronization results. The program utilized the NI-5783 to output random wave data at a rate of 400MS/s. The sampling clock from the NI-5783 was shared with itself and the PXIe-5105 through the PXI bus. Both the NI-5783 and PXIe-5105 sampled the data using the same clock set at 60MHz or a lower frequency.
+                <br>
+                <iframe width="750" height="480"
+                src="https://www.youtube.com/embed/PZCoAAn4AVo">
+                </iframe>
+                <br>The LabVIEW FPGA program was configured to generate random wave data at a rate of 400MS/s using the NI-5783. Synchronization between the NI-5783 and PXIe-5105 was established by sharing the sampling clock via the PXI bus. The sampling functionality was implemented for both the NI-5783 and PXIe-5105, utilizing the shared clock at a frequency of 60MHz or lower. 
+                <br><br>The LabVIEW program included a user interface for controlling and monitoring the test program. The LabVIEW FPGA program was integrated within the LabVIEW environment. The acquired data from both the NI-5783 and PXIe-5105 were displayed for synchronization analysis. The sampling clock frequency could be adjusted as required (60MHz or lower). 
+                <br><br>By executing the LabVIEW and LabVIEW FPGA programs, the customized test program allowed for the evaluation of synchronization results between the NI-5783 and PXIe-5105. The LabVIEW interface facilitated control, monitoring, and analysis of the acquired data, enabling an assessment of the synchronization effectiveness at the desired clock frequency.
+            </p>
+        </div>         
+    </section>
+
+     
+</main>
+
+
+<footer id="footer">
+ 
+    <!-- Copyright Section -->
+    <div class="copyright">
+         
+        <p>© All rights reserved | Yujie Hu </p>
+
+        <ul class="contact">
+
+            <li>
+                <a href="https://www.linkedin.com/in/yujie-hu-943209b9/" class="fa fa-linkedin">
+
+                </a>
+            </li>
+
+            <li>
+                <a href="https://www.facebook.com/profile.php?id=100085625613491" class="fa fa-facebook">
+
+                </a>
+            </li>
+
+            
+        </ul>
+    </div>
+</footer>

@@ -161,6 +161,56 @@ header{
 }
 
 /**********************************/
+/* Styling Main content projects */
+/**********************************/
+
+#projecttext
+{
+    overflow:hidden;
+    width: 800px;
+    margin: 10px auto;
+    margin-bottom: 0px;
+}
+
+#projecttext .title{
+    margin-top: 0px;
+    text-align: left;
+    margin-bottom:0px;
+}
+
+#projecttext p{
+    margin-bottom: 40px;
+    text-align: left;
+    padding: 20px;
+}
+
+
+/**********************************/
+/* Styling Main content for single project */
+/**********************************/
+
+#oneprojecttext
+{
+    overflow:hidden;
+    width: 800px;
+    margin: 10px auto;
+    margin-bottom: 0px;
+}
+
+#oneprojecttext .title{
+    margin-top: 0px;
+    text-align:center;
+    margin-bottom:0px;
+}
+
+#oneprojecttext p{
+    margin-bottom: 40px;
+    text-align:justify;
+    padding: 20px;
+}
+
+
+/**********************************/
 /* Styling Main content Section 2 */
 /**********************************/
 #section-2{
@@ -273,8 +323,7 @@ header{
     margin-left: 10%;
     margin-right:10%;
     text-align:justify;
-    padding-left:25px; 
-    text-indent: -25px;
+
 }
 
 
