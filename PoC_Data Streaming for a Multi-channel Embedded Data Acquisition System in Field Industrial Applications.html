@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>
+            PoC: Multi-channel Embedded Data Acquisition System Stream Disk Testing for Field Industrial Application
+        </title>
+
+        <link rel="stylesheet" href="css/style.css">
+        <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+
+    <body>
+        <!-- Header Menu of the Page -->
+       <!-- Header Menu of the Page -->
+
+    
+<header>
+    <!-- Top header menu containing
+         logo and Navigation bar -->
+    <div id="top-header">
+             
+        <!-- Logo -->
+        <div id="logo">
+            <img src="img/logo2.png" />
+        </div>   
+                 
+        <!-- Navigation Menu -->
+        <nav>
+          <div id="menu">
+            <ul>
+                <li class="active"><a href="index.html">Home</a></li>
+                <li><a href="CV.html">CV</a></li>
+                <li><a href="Projects.html">Projects</a></li>
+                <li><a href="#">About me</a></li>
+            </ul>
+          </div>
+        </nav>
+    </div>   
+ 
+    <!-- Image menu in Header to contain an Image and
+         a sample text over that image -->
+    <div id="header-image-menu">
+        <!--<img src="img/slider3.jpg"> -->
+        <h2 id = "image-text">
+           <!-- Welcome to Ray Club -->
+        </h2> 
+        <h3 id = "image-text">
+            
+        </h3>
+    </div>
+</header>
+
+
+
+
+
+ <!-- Main content between Header and Footer -->
+ <main>
+    <!-- Section 1 of Main content -->
+    <section>
+        <div id="oneprojecttext">
+            <h1 class="title">PoC: Data Streaming for a Multi-channel Embedded Data Acquisition System in Field Industrial Applications</h1>                               
+            <p>
+                              
+                <br><br><strong>Introduction </strong>
+                <br>The client requires unmanned and unattended underwater multi-channel, long-term data acquisition. To ensure the smooth storage of data and 
+                actual power consumption calculations in the computing system, a validation setup is needed.
+
+                <br><br><strong>System Overview</strong>
+                <br>Hardware: cRIO-9082 cRIO-9159 NI-9234 PXIe-4430
+                <br>Software: LabVIEW 2015, Real-Time 2015, FPGA 2015
+
+                <br><br><strong>Solution</strong>
+                <br>1. Verify the capability of cRIO-9082 and cRIO-9159 to perform data acquisition using 13 NI-9234 modules at a rate of 51.2 kS/s per channel, totaling 52 channels.
+                <br>2. Validate the ability of cRIO-9082 and cRIO-9159 to stream data from 52 channels, amounting to 10.6 MB/s, to an external portable hard drive.
+                <br>3. Measure the power consumption of the system during streaming disk operations using 2TB and 1TB portable hard drives.
+
+                <br><br><strong>Result</strong>
+                <br> 1. Data acquistion
+                <br>Since 13 units of NI-9234 modules couldn't be located, an alternative approach was adopted, involving the repeated transfer of identical data 13 times within 
+                the FPGA to simulate the actual data acquisition speed. Validation conducted at the host end yielded a transmission speed of 10.6 MB/s. Whether utilizing the 9234 
+                modules for acquisition on the 9082 or the 9159, the corresponding acquisition speed was achieved, effectively capturing data waveforms.
+                <br><img src="img/POC2_Streaming Test.png" alt="Test result"  style="width:100%; align-items:center;" >
+                <br><br> 2. Streaming
+                <br>Conducting streaming disk tests with 1TB and 2TB portable hard drives, employing both TDMS and binary file formats for the streaming process. Achieving a 
+                streaming speed of up to 10.6 MB/s per second, and each file is saved with a size of 1GB.
+                <br><br> 3. Power Consumption
+                <br>Utilizing PXIe-4430 to separately power cRIO-9082 and cRIO-9159 for measuring operational states. The data is as follows:
+                <br> a. cRIO-9082
+                <br> For the 9082, the power consumption of the 1TB portable hard drive is higher than that of the 2TB drive. This difference could be attributed to the 2TB 
+                drive being relatively newer and having a more efficient power management chipset.
+                <br><img src="img/POC2_Power Test1.png" alt="Result for cRIO-9082"  style="width:100%; align-items:center;" >
+                <br> b. NI-9159
+                <br><img src="img/POC2_Power Test2.png" alt="Result for NI-9159"  style="width:100%; align-items:center;" >
+                <br>
+                
+            </div>         
+    </section>
+
+     
+</main>
+
+
+<footer id="footer">
+ 
+    <!-- Copyright Section -->
+    <div class="copyright">
+         
+        <p>© All rights reserved | Yujie Hu </p>
+
+        <ul class="contact">
+
+            <li>
+                <a href="https://www.linkedin.com/in/yujie-hu-943209b9/" class="fa fa-linkedin">
+
+                </a>
+            </li>
+
+            <li>
+                <a href="https://www.facebook.com/profile.php?id=100085625613491" class="fa fa-facebook">
+
+                </a>
+            </li>
+
+            
+        </ul>
+    </div>
+</footer>

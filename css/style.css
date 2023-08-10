@@ -207,6 +207,7 @@ header{
     margin-bottom: 40px;
     text-align:justify;
     padding: 20px;
+    
 }
 
 
@@ -319,6 +320,30 @@ header{
 }
 
 #cv p{
+    margin-bottom: 1px;
+    margin-left: 10%;
+    margin-right:10%;
+    text-align:justify;
+
+}
+
+
+/**********************************/
+/* Styling Main content CV2 */
+/**********************************/
+#cv2{   
+    overflow: hidden;
+    width: 1000px;
+    margin: 10px auto;
+}
+
+#cv2 .title{
+    margin-top: 10px;
+    padding: 10px;
+    text-align: center;
+}
+
+#cv2 p{
     margin-bottom: 1px;
     margin-left: 10%;
     margin-right:10%;

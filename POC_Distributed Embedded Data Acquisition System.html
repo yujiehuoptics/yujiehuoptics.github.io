@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>
+            PoC: Distributed Embedded Data Acquisition System for Field Industrial Machine
+        </title>
+
+        <link rel="stylesheet" href="css/style.css">
+        <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+
+    <body>
+        <!-- Header Menu of the Page -->
+       <!-- Header Menu of the Page -->
+
+    
+<header>
+    <!-- Top header menu containing
+         logo and Navigation bar -->
+    <div id="top-header">
+             
+        <!-- Logo -->
+        <div id="logo">
+            <img src="img/logo2.png" />
+        </div>   
+                 
+        <!-- Navigation Menu -->
+        <nav>
+          <div id="menu">
+            <ul>
+                <li class="active"><a href="index.html">Home</a></li>
+                <li><a href="CV.html">CV</a></li>
+                <li><a href="Projects.html">Projects</a></li>
+                <li><a href="#">About me</a></li>
+            </ul>
+          </div>
+        </nav>
+    </div>   
+ 
+    <!-- Image menu in Header to contain an Image and
+         a sample text over that image -->
+    <div id="header-image-menu">
+        <!--<img src="img/slider3.jpg"> -->
+        <h2 id = "image-text">
+           <!-- Welcome to Ray Club -->
+        </h2> 
+        <h3 id = "image-text">
+            
+        </h3>
+    </div>
+</header>
+
+
+
+
+
+ <!-- Main content between Header and Footer -->
+ <main>
+    <!-- Section 1 of Main content -->
+    <section>
+        <div id="oneprojecttext">
+            <h1 class="title">PoC: Distributed Embedded Data Acquisition System for Field Industrial Machine</h1>                               
+            <p>
+                <br><Strong>Aim: </Strong>
+                <br>Test the synchronization of PXI and cRIO using GPS only
+                <br>
+                
+                
+                <br><br><strong>Introduction: </strong>
+                <br>The testing requirement is real-time distributed state monitoring of devices in the field. It necessitates the use of NI PXI and cRIO embedded data acquisition platforms for distributed synchronous data collection. Synchronization testing based on GPS signals is also required.
+
+                <br><br><strong>Project report</strong>
+                <br><br><strong>1. System Overview:</strong>
+                <br>The synchronization system is divided into two parts. The first part involves data acquisition and synchronization on the PXI platform, while the second part focuses on data acquisition and synchronization on the cRIO platform. Both parts of the system utilize a time-based synchronization method, using GPS signals for synchronization. The overall architecture of the system is illustrated in following part:
+                <br>
+                <br> <strong>GPS Signal - Generate Sampling Clock - Data Acquistion</strong>
+                <br>
+                <br>The description shows that the GPS-based synchronization method can be divided into three distinct steps:
+                <br>1. GPS Signal Reception: The system receives the PPS (Pulse Per Second) signal transmitted by satellites to calibrate the time.
+                <br>2. Clock Discipline: Utilizing the calibrated time, the system generates a standard pulse signal, either as a reference signal to discipline other clocks or directly as the sampling clock.
+                <br>3. Clock Generation: After disciplining the reference clock or using the device backplane clock, the system generates the required sampling clock to perform data acquisition.
+                
+                <br><br><strong>2. System Design:</strong>
+                <br>According to the above synchronous system architecture, we have provided corresponding solutions for distributed system synchronization, 
+                which can be divided into two parts: the PXI platform and the cRIO platform. Within each platform, we adopt a signal-based synchronization 
+                method to achieve the highest synchronization accuracy. However, between the PXI and cRIO platforms, as they are distributed systems, 
+                signal-based synchronization methods cannot be used for achieving synchronization. Therefore, we employ a time-based synchronization method 
+                to synchronize all data channels across the two distributed data acquisition systems. The system architecture is shown in the diagram below:
+                <br> <img src="img/POC1_PXI and cRIO overall.png" alt="Distributed Embedded Data Acquisition System"  style="width:90%; align-items:center;" >
+                
+                <br>In the PXI platform, NI's GPS board receives GPS signals and passes them to the timing board PIXe-6674T. The timing board generates highly 
+                precise timing signals and routes them to the star bus of the PXI chassis, thereby distributing the signals to every board within the chassis 
+                simultaneously. In the cRIO platform, the GPS board collects the GPS PPS signal and timestamps the signals for the data acquisition card, 
+                enabling the acquisition of the time for each signal.
+                <br>This synchronization solution can be divided into two parts. The first part focuses on synchronizing between the two platforms, 
+                while the second part deals with the synchronization methods within each platform. Below, we will introduce the synchronization methods 
+                based on these two aspects.
+
+                <br><br> 2.1 Platform-to-Platform Synchronization
+                <br> As the two platforms are distributed systems, we cannot synchronize them using the signal-based synchronization method, 
+                which involves routing signals based on the same signal between the platforms. Therefore, we must rely on the time-based synchronization 
+                method. In this case, we employ a time-based synchronization method based on GPS signals. Both platforms collect the PPS signal emitted 
+                by the GPS, and using this signal, we calibrate the local time of each platform to achieve synchronization in the distributed system.
+                <br> The methods used for GPS synchronization differ between the two platforms. Below, we will explain each method separately.
+
+                <br><br> 2.1.1 GPS Signal Synchronization for the PXI Platform
+                <br>In the PXI platform, we use the GPS board PXI-6683 for GPS signal acquisition. This board is capable of receiving the GPS PPS 
+                signal and using it to discipline a high-stability TCXO (Temperature Compensated Crystal Oscillator) with an accuracy of 1 ppm 
+                (parts per million). The disciplined TCXO then serves as a clock source and provides output signals. These output signals can be 
+                utilized as the standard clock for other boards within the PXI device, or it can be used to discipline the PXI backplane's 10MHz 
+                clock, which in turn can be used as the clock source for other devices. Below is the hardware architecture of the PXI-6683:
+                <br> <img src="img/POC1_PXI and cRIO 2.png" alt="Hardware Architecture of PXI-6683"  style="width:70%; align-items:center;" >
+                <br>As we can see, this board is capable of receiving GPS signals and then using routing circuits to direct the GPS PPS signal to 
+                discipline the onboard high-precision TCXO. After disciplining, the TCXO can output signals through various routing circuits, 
+                such as CLKOUT, PFI, PXI_TRIG, PXI_STAR, etc., providing different functionalities.
+                <br>In this project, we use the PXI-6683 to generate signals to discipline the 10MHz clock on the PXI chassis backplane for synchronization.
+
+                <br><br> 2.1.1 GPS Signal Synchronization for the cRIO Platform
+                <br>In the cRIO platform, this solution utilizes the NI 9467 module for GPS-based PPS signal synchronization. This module receives 
+                the PPS signal with an accuracy of ±100 ns per second. During the data acquisition process, the NI 9467 module synchronizes and timestamps 
+                each data point, allowing us to obtain the actual acquisition time for the data. This timestamp is then used to synchronize data from 
+                other distributed platforms.
+                
+                <br><br>2.2 Synchronization with platforms
+                <br>The synchronization methods within each platform also vary due to the differences in the two system architectures. 
+                Below, we will describe the synchronization methods separately for the PXI and cRIO platforms.
+
+                <br><br>2.2.1 Internal Synchronization for the PXI Platform
+                After receiving the high-precision timing signal output from the GPS board PXI-6683, the internal synchronization architecture within the PXI 
+                chassis is shown in following Figure. The timing board PXIe-6674T generates the timing signal, which is then routed to the star trigger bus, synchronizing 
+                multiple data acquisition devices, such as multiple PXI-6133 multifunction data acquisition cards, based on the timing signal.
+                <br><img src="img/POC1_PXI and cRIO 3.png" alt="Internal Synchronization for the PXI Platform"  style="width:90%; align-items:center;" >
+                
+                <br><br>2.2.2 Internal Synchronization for the cRIO Platform
+                <br>Within the cRIO platform, multiple modules synchronize their data acquisition using the onboard clock of the cRIO chassis, ensuring 
+                data synchronization. However, since the cRIO platform's GPS synchronization module lacks clock disciplining functionality, the corresponding 
+                method for GPS synchronization is to collect the corresponding timestamps simultaneously during each data acquisition, as shown in the diagram
+                 below:
+                <br><img src="img/POC1_PXI and cRIO 4.png" alt="Internal Synchronization for the PXI Platform"  style="width:60%; align-items:center;" >
+
+                <br><br><strong>Result</strong>
+                <br>After the initial design phase, the proposed solution was implemented and validated in the NI laboratory. The physical setup of the experimental system is shown in the following image:
+                <br><img src="img/POC1_PXI and cRIO.png" alt="Internal Synchronization for the PXI Platform"  style="width:100%; align-items:center;" >
+                <br>In the image, you can observe the corresponding platforms and cards. After completing the system setup, synchronization experiments were 
+                conducted. Due to GPS signal issues in the office environment, the signal strength was generally poor, resulting in synchronization results 
+                in the range of several tens of microseconds. However, once the signal stabilized, better synchronization results in the range of microseconds
+                 were achieved, as shown in following Figure and Video:
+                <br><img src="img/POC1_PXI and cRIO 5.png" alt="Internal Synchronization for the PXI Platform"  style="width:100%; align-items:center;" >
+                <br><br><iframe width="750" height="480" src="https://www.youtube.com/embed/UQldnKM6k6k">s </iframe>
+                
+            </div>         
+    </section>
+
+     
+</main>
+
+
+<footer id="footer">
+ 
+    <!-- Copyright Section -->
+    <div class="copyright">
+         
+        <p>© All rights reserved | Yujie Hu </p>
+
+        <ul class="contact">
+
+            <li>
+                <a href="https://www.linkedin.com/in/yujie-hu-943209b9/" class="fa fa-linkedin">
+
+                </a>
+            </li>
+
+            <li>
+                <a href="https://www.facebook.com/profile.php?id=100085625613491" class="fa fa-facebook">
+
+                </a>
+            </li>
+
+            
+        </ul>
+    </div>
+</footer>
